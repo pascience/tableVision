@@ -30,7 +30,7 @@ For camera server:
 
 Run a pipeline with, e.g.
 
-    python ddp extract_paper
+    python ddp --pipeline extract_paper
 
 Check out `ddp/__main__.py` for command line options.
 

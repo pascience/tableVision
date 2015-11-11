@@ -2,11 +2,7 @@
 
 Usage:
 
-python ddp [-w] [-c CAM_NUM] [-u URL] [-i IMAGE_FILE] PIPELINE
-
-positional arguments:
-
-    PIPELINE: The pipeline to run.
+python ddp [-w] [-c CAM_NUM] [-u URL] [-i IMAGE_FILE] [--pipeline PIPELINE]
 
 optional arguments:
 
@@ -27,7 +23,7 @@ optional arguments:
 
 Examples:
 
-    python ddp extract_paper
+    python ddp --pipeline extract_paper
 
 
 Notes:
@@ -85,6 +81,7 @@ def main():
     frame = None
     capture = None
     pipeline_name = options.pipeline
+
     pipeline = importlib.import_module("pipeline." + pipeline_name)
     assert hasattr(pipeline, Settings.METHOD_NAME_TO_RUN),\
         "module has to have " + Settings.METHOD_NAME_TO_RUN + " method"
@@ -131,8 +128,5 @@ def main():
 
     close()
 
-
-
 if __name__ == "__main__":
     main()
-
