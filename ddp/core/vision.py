@@ -110,7 +110,7 @@ def binarize_ink_IMPROVED(grey):
 
 
 def white_balance(inimg, randomPoolSize = 100, selectionPoolSize = 20):
-    img = inimg.copy()
+    img = inimg.astype(float, casting='unsafe')
     height, width, colors = img.shape  # y, x, color
     randomPixels = map(
         lambda id: img[
@@ -143,7 +143,7 @@ def white_balance(inimg, randomPoolSize = 100, selectionPoolSize = 20):
     img[:, :, 0] -= dg
     img[:, :, 1] -= db
     img[:, :, 2] -= dr
-    return img
+    return img.astype('uint8')
 
 
 # img is a binary image where ink is white, paper is black. This
